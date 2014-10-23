@@ -1,7 +1,66 @@
 \documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{english}
 \title{Tamandua Protocol}
 \author{Kacper Kołodziej\\ kacper@kolodziej.in}
-\version{1.1.1}
+\date{23th October 2014}
 \begin{document}
 \maketitle
+\makeindex
+
+\section{Header}
+
+Header of Tamandua's message contain these fields:
+\begin{itemize}
+	\item id -- 4 bytes
+	\item type -- 1 byte
+	\item author -- 4 bytes
+	\item group -- 2 bytes
+	\item error code -- 1 byte
+	\item UTC time -- 4 bytes
+	\item size -- 4 bytes
+	\item options -- 2 bytes
+	\item author's identification -- 64 bytes
+	\item client's identification -- 128 bytes
+\end{itemize}
+
+\subsection{Id}
+
+Id field contains next number assigned by server's component called MessageManager. Each message has its own, unique number which allows us to identify message. Size of 4 bytes allows to mark $2^{32} \approx 4.3$ billions of messages. By default its equal zero. Server assigns value to this field.
+
+\subsection{Type}
+
+Type field contains 1 byte number which specifies type of the message. All types are specified in the Table...
+
+\subsection{Author}
+
+Author field stores the id number of message's author. Each user has his unique id number.
+
+\subsection{Group}
+
+Group field says to which group on server message had been sent.
+
+\subsection{Error code}
+
+Error code is different from zero if message informs about error. By default it is set to zero which means everything is OK. 
+
+\subsection{UTC time}
+
+Seconds from epoch (1st January 1970, 0:00) in UTC zone. This value is always set by server.
+
+\subsection{Size}
+
+Message's data size.
+
+\subsection{Options}
+
+Optional field. Options are unused.
+
+\subsection{Author's identification}
+
+C-string in UTF-8 set by server.
+
+\subsection{Client's identification
+
 \end{document}

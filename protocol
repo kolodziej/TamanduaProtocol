@@ -4,5 +4,7 @@
 + group : uint16_t
 + error_code : uint8_t
 + utc_time : uint32_t
-
-(128 bitów)
++ msg_size : uint16_t
++ options : uint16_t
++ author_identification : char[64]
++ client_identification : char[128]
